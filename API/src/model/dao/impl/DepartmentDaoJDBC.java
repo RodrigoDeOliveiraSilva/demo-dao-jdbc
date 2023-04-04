@@ -1,11 +1,27 @@
 package model.dao.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
+import db.DbException;
 import model.dao.DepartmentDao;
 import model.entities.Department;
+import model.entities.Seller;
 
 public class DepartmentDaoJDBC implements DepartmentDao {
+
+    private Connection conn = null;
+    
+    
+
+    public DepartmentDaoJDBC(Connection conn) {
+        if(conn != null){
+            this.conn = conn;
+        }
+    }
 
     @Override
     public void insert(Department obj) {
@@ -24,8 +40,10 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 
     @Override
     public Department findById(Integer id) {
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+        
+        return null;
     }
+
 
     @Override
     public List<Department> findAll() {

@@ -1,7 +1,9 @@
 package application;
+import java.util.List;
+
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
-
+import model.entities.Department;
 import model.entities.Seller;
 
 public class App {
@@ -14,6 +16,11 @@ public class App {
         Seller seller = sellerDao.findById(3);
         System.out.println(seller);
 
+        System.out.println("\n====== 2º TEST: seller findByDepartment ======");
+        Department department = new Department(2, null);
+        List<Seller> listSeller = sellerDao.findByDepartment(department);
+
+        listSeller.forEach(System.out::println);
        
     }
 }
