@@ -1,7 +1,6 @@
 package model.dao.impl;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -75,7 +74,11 @@ public class SellerDaoJDBC implements SellerDao {
             st.setInt(5, obj.getDepartment().getId());
             st.setInt(6, obj.getId());
 
-            st.executeUpdate();
+            int rowsAffected = st.executeUpdate();
+
+            if(rowsAffected ==0){
+                throw new DbException("Id Inexist");
+            }
 
         } catch (SQLException e) {
             throw new DbException(e.getMessage());

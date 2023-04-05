@@ -1,19 +1,30 @@
 package application;
-import java.util.Date;
+
+/*import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
-
-import model.dao.DaoFactory;
 import model.dao.SellerDao;
-import model.entities.Department;
 import model.entities.Seller;
+*/
+import model.dao.DepartmentDao;
+import model.dao.DaoFactory;
+
+import model.entities.Department;
+
 
 public class App {
-    //Subir imagem do MYSQL = docker run --name coursejdbc -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mariadb:latest
     public static void main(String[] args) throws Exception {
+        
+        DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
+
+        System.out.println("====== 1º TEST: Department Insert ======");
+        Department dep = new Department(null, "PC");
+        departmentDao.insert(dep);
+        System.out.println(dep);
+
+        /*System.out.println("====== TEST seller======");
         Scanner sc = new Scanner(System.in);
         SellerDao sellerDao = DaoFactory.createSellerDao();
-
         System.out.println("====== 1º TEST: seller findById ======");
         Seller sellerFindById = sellerDao.findById(3);
         System.out.println(sellerFindById);
@@ -29,7 +40,7 @@ public class App {
 
         System.out.println("\n====== 4º TEST: seller insert ======");
         Seller newSeller = new Seller(null,"Fabricio", "fabricio@gmail.com",new Date(),4000.00,department);
-        DaoFactory.createSellerDao().insert(newSeller);
+        sellerDao.insert(newSeller);
         System.out.println(newSeller);
 
         System.out.println("\n====== 5º TEST: seller update ======");
@@ -45,6 +56,6 @@ public class App {
         System.out.println("Delete Completed.");
 
         sc.close();
-
+        */
     }
 }
