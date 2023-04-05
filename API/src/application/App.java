@@ -22,6 +22,10 @@ public class App {
         departmentDao.insert(dep);
         System.out.println(dep);
 
+        System.out.println("\n ====== 2º TEST: Department Update ======");
+        Department dep2 = new Department(1,"TV");
+        departmentDao.update(dep2);
+        System.out.println("Update success.");
         /*System.out.println("====== TEST seller======");
         Scanner sc = new Scanner(System.in);
         SellerDao sellerDao = DaoFactory.createSellerDao();
