@@ -1,6 +1,7 @@
 package application;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
@@ -10,7 +11,7 @@ import model.entities.Seller;
 public class App {
     //Subir imagem do MYSQL = docker run --name coursejdbc -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mariadb:latest
     public static void main(String[] args) throws Exception {
-        
+        Scanner sc = new Scanner(System.in);
         SellerDao sellerDao = DaoFactory.createSellerDao();
 
         System.out.println("====== 1º TEST: seller findById ======");
@@ -32,12 +33,18 @@ public class App {
         System.out.println(newSeller);
 
         System.out.println("\n====== 5º TEST: seller update ======");
-        sellerFindById = sellerDao.findById(1);
+        sellerFindById = sellerDao.findById(2);
         sellerFindById.setName("Julia Robert");
         sellerDao.update(sellerFindById);
-        System.out.println("Update Completed");
+        System.out.println("Update Completed.");
         
+        System.out.println("\n====== 6º TEST: seller delete ======");
+        System.out.print("Enter id of seller for delete test: ");
+        int id = sc.nextInt();
+        sellerDao.deleteById(id);
+        System.out.println("Delete Completed.");
 
+        sc.close();
 
     }
 }
