@@ -30,5 +30,14 @@ public class App {
         Seller newSeller = new Seller(null,"Fabricio", "fabricio@gmail.com",new Date(),4000.00,department);
         DaoFactory.createSellerDao().insert(newSeller);
         System.out.println(newSeller);
+
+        System.out.println("\n====== 5º TEST: seller update ======");
+        sellerFindById = sellerDao.findById(1);
+        sellerFindById.setName("Julia Robert");
+        sellerDao.update(sellerFindById);
+        System.out.println("Update Completed");
+        
+
+
     }
 }
