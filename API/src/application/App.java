@@ -26,6 +26,15 @@ public class App {
         Department dep2 = new Department(1,"TV");
         departmentDao.update(dep2);
         System.out.println("Update success.");
+
+        System.out.println("\n ====== 3º TEST: Department DELETE ======");
+        departmentDao.deleteById(12);
+        System.out.println("Delete success.");
+
+        System.out.println("\n ====== 4º TEST: Department findById ======");
+        Department dep3 = departmentDao.findById(2);
+        System.out.println(dep3);
+
         /*System.out.println("====== TEST seller======");
         Scanner sc = new Scanner(System.in);
         SellerDao sellerDao = DaoFactory.createSellerDao();
