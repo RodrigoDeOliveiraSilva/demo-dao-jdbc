@@ -7,6 +7,9 @@ import model.dao.SellerDao;
 import model.entities.Seller;
 */
 import model.dao.DepartmentDao;
+
+import java.util.List;
+
 import model.dao.DaoFactory;
 
 import model.entities.Department;
@@ -18,7 +21,7 @@ public class App {
         DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
 
         System.out.println("====== 1º TEST: Department Insert ======");
-        Department dep = new Department(null, "PC");
+        Department dep = new Department(null, "Desktop");
         departmentDao.insert(dep);
         System.out.println(dep);
 
@@ -28,12 +31,16 @@ public class App {
         System.out.println("Update success.");
 
         System.out.println("\n ====== 3º TEST: Department DELETE ======");
-        departmentDao.deleteById(12);
+        departmentDao.deleteById(5);
         System.out.println("Delete success.");
 
         System.out.println("\n ====== 4º TEST: Department findById ======");
         Department dep3 = departmentDao.findById(2);
         System.out.println(dep3);
+
+        System.out.println("\n ====== 5º TEST: Department findAll ======");
+        List<Department> listDep = departmentDao.findAll();
+        listDep.forEach(System.out::println);
 
         /*System.out.println("====== TEST seller======");
         Scanner sc = new Scanner(System.in);
